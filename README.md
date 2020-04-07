@@ -35,6 +35,8 @@ ou sa variante courte
 git status --short
 ```
 
+MON BOOOOOO SAPIIIIIIN
+
 
 Toto fait du ski dans les bois
 
