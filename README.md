@@ -11,12 +11,29 @@
   - Inclut dans les distribution Linux & macOS
   - Inclut dans Git Bash (Git for Windows)
   - Antiseche : https://github.com/LeCoupa/awesome-cheatsheets/blob/master/languages/bash.sh
+
 ## Premiers pas
 
+### Cloner le projet
 Avant toutes choses, il faut "cloner" le projet. Pour ce projet, il faut faire.
 
 D'abord, aller 
 ```bash
 git clone https://github.com/Clovel/git-example.git
 ```
+
+## Faire des modifications
+Faites des modification a un fichier avec l'editeur de texte/code de votre choix.
+
+## Commit des modifications
+Maintenant que vous avez modifié votre fichier (par ex. `README.md`), vous verez les modifications avec la commande suivante :
+```bash
+git status
+```
+ou sa variante courte
+```bash
+git status --short
+```
+
+
 
