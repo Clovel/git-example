@@ -329,3 +329,33 @@ Utiliser la ligne de commande pour git est le plus facile et le plus pratique po
 - [Tower](https://www.git-tower.com/) - Win, macOS - fournova
 - [SourceTree](https://www.sourcetreeapp.com) - Win, macOS - Atlassian
 - [GitAhead](https://github.com/gitahead/gitahead) - Win, Linux, macOS - Open Source (MIT)
+
+# Le `.gitconfig`, le `.git/config` & le `/etc/gitconfig`
+
+J'ai déjà parlé de la configuration de `git` plus haut. Voici quelques détails sur cette configuration.
+
+Quand on entre une commande `git config --global`, ce qu'il se passe réellement, c'est qu'il ajoute des lignes de parametres dans le fichier de configuration global de `git`, généralement situé à `~`, le dossier de votre utilisateur. Lorque vous entrez une commande `git config` (sans le `--global`), la même chose se passe, mais cette fois ci c'est le fichier de configuration du projet en cours qui et modifié. 
+
+Par exemple, si vous etes dans le dossier (ou sous dossier) du projet `mon-projet` (Par exemple vous êtes à `/Users/mon-utilisateur/repository/mon-projet/`), vous allez modifier le fichier de configuration de votre projet, qui se trouve donc à `/Users/mon-utilisateur/repository/mon-projet/.git/config`. Ce fichier contient les références vers chacune des branches en local, les liens vers les dépots distants, et des réglages locaux de `git` (Fin de lignes, changments de filemodes, etc.).
+
+En règle générale, il faut toujours s'assurer que le nom et l'adresse email utilisée dans un projet est la bonne. Pour cela, il suffit de faire un commit "poubelle" et de regarder quelle à été l'adresse utilisé pour ce commit avec `git log`. Sinon on peut vérifier avec :
+```bash
+$ git config user.name        # Commande
+Clovis Durand                 # Resultat
+```
+
+On peut également configurer sa clé de signature GPG, la signature GPG automatique des commits, fin de lignes, changments de filemodes, les modes de log, etc.
+
+Il y a un troisième fichier de configuration pour `git`, situé à `$(prefix)/etc/gitconfig`. Alors que `~/.gitconfig` était le fichier configuration de l'utilisateur (de l'ordinateur) et `.git/config` était le fichier de configuration du projet, ce dernier fichier est le fichier de configuration du système. On peut le modifier avec la commande :
+```bash
+git config --system ...
+```
+
+Par ordre de précédence, les fichiers vont donc : 
+```
+/etc/gitconfig
+  |
+  L_ ~/.gitconfig
+       |
+       L_ ~/repository/mon-projet/.git/config
+```
